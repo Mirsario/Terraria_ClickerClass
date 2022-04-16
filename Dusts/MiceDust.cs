@@ -7,7 +7,7 @@ namespace ClickerClass.Dusts
 {
 	public class MiceDust : ModDust
 	{
-		public override void OnSpawn(Dust dust, IEntitySource source)
+		public override void OnSpawn(Dust dust)
 		{
 			dust.scale *= 1.25f;
 		}

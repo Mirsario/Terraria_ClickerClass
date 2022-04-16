@@ -10,7 +10,7 @@ namespace ClickerClass.Dusts
 	/// </summary>
 	public class ColorableDust : ModDust
 	{
-		public override void OnSpawn(Dust dust, IEntitySource source)
+		public override void OnSpawn(Dust dust)
 		{
 			dust.noGravity = true;
 			dust.noLight = true;

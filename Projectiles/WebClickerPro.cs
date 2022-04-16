@@ -75,7 +75,7 @@ namespace ClickerClass.Projectiles
 
 			for (int k = 0; k < 5; k++)
 			{
-				int dust = Dust.NewDust(null, Projectile.position, Projectile.width, Projectile.height, 261, Main.rand.Next((int)-4f, (int)4f), Main.rand.Next((int)-4f, (int)4f), 0, default(Color), 0.8f);
+				int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 261, Main.rand.Next((int)-4f, (int)4f), Main.rand.Next((int)-4f, (int)4f), 0, default(Color), 0.8f);
 				Main.dust[dust].noGravity = true;
 			}
 		}

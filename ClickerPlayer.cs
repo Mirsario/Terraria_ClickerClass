@@ -788,7 +788,7 @@ namespace ClickerClass
 
 					for (int k = 0; k < 15; k++)
 					{
-						Dust dust = Dust.NewDustDirect(null, Player.position, Player.width, Player.height, 174, Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-5f, 5f), 0, default, 1.25f);
+						Dust dust = Dust.NewDustDirect(Player.position, Player.width, Player.height, 174, Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-5f, 5f), 0, default, 1.25f);
 						dust.noGravity = true;
 						dust.noLight = true;
 					}
@@ -860,7 +860,7 @@ namespace ClickerClass
 									Player.HealLife(10);
 									for (int k = 0; k < 10; k++)
 									{
-										Dust dust = Dust.NewDustDirect(null, cookieProjectile.Center, 20, 20, 87, Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(-3f, 3f), 0, default, 1.15f);
+										Dust dust = Dust.NewDustDirect(cookieProjectile.Center, 20, 20, 87, Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(-3f, 3f), 0, default, 1.15f);
 										dust.noGravity = true;
 									}
 								}
@@ -870,7 +870,7 @@ namespace ClickerClass
 									Player.AddBuff(ModContent.BuffType<CookieBuff>(), 300);
 									for (int k = 0; k < 10; k++)
 									{
-										Dust dust = Dust.NewDustDirect(null, cookieProjectile.Center, 20, 20, 0, Main.rand.NextFloat(-4f, 4f), Main.rand.NextFloat(-4f, 4f), 75, default, 1.5f);
+										Dust dust = Dust.NewDustDirect(cookieProjectile.Center, 20, 20, 0, Main.rand.NextFloat(-4f, 4f), Main.rand.NextFloat(-4f, 4f), 75, default, 1.5f);
 										dust.noGravity = true;
 									}
 								}
@@ -933,7 +933,7 @@ namespace ClickerClass
 								accSMedalAmount++;
 								medalProj.ai[1] = 1f;
 								Vector2 offset = new Vector2(Main.rand.Next(-20, 21), Main.rand.Next(-20, 21));
-								Dust dust = Dust.NewDustDirect(null, Main.MouseWorld + offset, 8, 8, 86, Scale: 1.25f);
+								Dust dust = Dust.NewDustDirect(Main.MouseWorld + offset, 8, 8, 86, Scale: 1.25f);
 								dust.noGravity = true;
 								dust.velocity = -offset * 0.05f;
 							}
@@ -957,7 +957,7 @@ namespace ClickerClass
 								accFMedalAmount += 2;
 								medalProj.ai[1] = 1f;
 								Vector2 offset = new Vector2(Main.rand.Next(-20, 21), Main.rand.Next(-20, 21));
-								Dust dust = Dust.NewDustDirect(null, Main.MouseWorld + offset, 8, 8, 173, Scale: 1.25f);
+								Dust dust = Dust.NewDustDirect(Main.MouseWorld + offset, 8, 8, 173, Scale: 1.25f);
 								dust.noGravity = true;
 								dust.velocity = -offset * 0.05f;
 							}
@@ -1036,7 +1036,7 @@ namespace ClickerClass
 							for (int k = 0; k < 2 * accHotKeychainSpice; k++)
 							{
 								Vector2 offset = new Vector2(Main.rand.Next(-25, 26), Main.rand.Next(-25, 26));
-								Dust dust = Dust.NewDustDirect(null, Player.position + offset, Player.width, Player.height, 174, Scale: 1f);
+								Dust dust = Dust.NewDustDirect(Player.position + offset, Player.width, Player.height, 174, Scale: 1f);
 								dust.noGravity = true;
 								dust.velocity = -offset * 0.05f;
 							}
@@ -1054,7 +1054,7 @@ namespace ClickerClass
 							for (int k = 0; k < 10; k++)
 							{
 								Vector2 offset = new Vector2(Main.rand.Next(-25, 26), Main.rand.Next(-25, 26));
-								Dust dust = Dust.NewDustDirect(null, Player.position + offset, Player.width, Player.height, 174, Scale: 1.5f);
+								Dust dust = Dust.NewDustDirect(Player.position + offset, Player.width, Player.height, 174, Scale: 1.5f);
 								dust.noGravity = true;
 								dust.velocity = -offset * 0.05f;
 							}
@@ -1150,7 +1150,7 @@ namespace ClickerClass
 					{
 						for (int k = 0; k < 15; k++)
 						{
-							int dust = Dust.NewDust(null, target.position, 20, 20, 11, Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(-3f, 3f), 75, default(Color), 1.25f);
+							int dust = Dust.NewDust(target.position, 20, 20, 11, Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(-3f, 3f), 75, default(Color), 1.25f);
 							Main.dust[dust].noGravity = true;
 						}
 						
@@ -1181,7 +1181,7 @@ namespace ClickerClass
 						SoundEngine.PlaySound(2, (int)Player.position.X, (int)Player.position.Y, 108);
 						for (int k = 0; k < 15; k++)
 						{
-							int dust = Dust.NewDust(null, target.position, 20, 20, 1, Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-5f, 5f), 150, default(Color), 1.35f);
+							int dust = Dust.NewDust(target.position, 20, 20, 1, Main.rand.NextFloat(-5f, 5f), Main.rand.NextFloat(-5f, 5f), 150, default(Color), 1.35f);
 							Main.dust[dust].noGravity = true;
 						}
 
