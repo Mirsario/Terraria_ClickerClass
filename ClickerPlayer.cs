@@ -1222,7 +1222,7 @@ namespace ClickerClass
 						toDir = toDir.RotatedBy(target.velocity.ToRotation());
 						int damageAmount = (int)(damage * 0.25f);
 						damageAmount = damageAmount < 1 ? 1 : damageAmount;
-						//TODO find a better source for this
+
 						Projectile.NewProjectile(entitySource, target.Center + toDir, target.velocity * 0f + toDir.SafeNormalize(Vector2.UnitY) * 10f, crystal, damageAmount, 1f, Main.myPlayer, target.whoAmI, hasSpawnEffects);
 						i++;
 						spawnEffects = false;
