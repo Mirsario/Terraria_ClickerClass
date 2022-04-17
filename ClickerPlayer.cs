@@ -718,8 +718,8 @@ namespace ClickerClass
 						if (Main.myPlayer == Player.whoAmI)
 						{
 							int damage = Math.Max(1, (int)(heldItem.damage * 0.2f));
-							//TODO find better source for this/wait for tml
-							Projectile.NewProjectile(null, Main.MouseWorld.X + 8, Main.MouseWorld.Y + 11, 0f, 0f, ModContent.ProjectileType<PrecursorPro>(), damage, 0f, Player.whoAmI);
+
+							Projectile.NewProjectile(Player.GetSource_FromThis(context: "SetBonus_Precursor"), Main.MouseWorld.X + 8, Main.MouseWorld.Y + 11, 0f, 0f, ModContent.ProjectileType<PrecursorPro>(), damage, 0f, Player.whoAmI);
 						}
 						setPrecursorTimer = 0;
 					}
@@ -1153,9 +1153,11 @@ namespace ClickerClass
 							int dust = Dust.NewDust(target.position, 20, 20, 11, Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(-3f, 3f), 75, default(Color), 1.25f);
 							Main.dust[dust].noGravity = true;
 						}
-						
+
+						var entitySource = projectile.GetSource_OnHit(target, context: "GoldenTicket");
 						int amount = 1 + Main.rand.Next(6);
-						int coin = Item.NewItem(new EntitySource_OnHit_ByItemSourceID(Main.player[projectile.owner], target), target.Hitbox, ItemID.CopperCoin, amount, false, 0, false, false);
+						int coin = Item.NewItem(entitySource, target.Hitbox, ItemID.CopperCoin, amount, false, 0, false, false);
+
 						if (amount > 0)
 						{
 							clickerMoneyGenerated += amount;
@@ -1187,9 +1189,11 @@ namespace ClickerClass
 
 						if (Main.myPlayer == Player.whoAmI)
 						{
+							var entitySource = Player.GetSource_ItemUse(accPaperclipsItem);
+
 							for (int k = 0; k < 4; k++)
 							{
-								Projectile.NewProjectile(new EntitySource_ItemUse(Player, accPaperclipsItem), Main.MouseWorld.X, Main.MouseWorld.Y, Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-6f, -2f), ModContent.ProjectileType<BottomlessBoxofPaperclipsPro>(), damage, 2f, Player.whoAmI);
+								Projectile.NewProjectile(entitySource, Main.MouseWorld.X, Main.MouseWorld.Y, Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-6f, -2f), ModContent.ProjectileType<BottomlessBoxofPaperclipsPro>(), damage, 2f, Player.whoAmI);
 							}
 						}
 
@@ -1203,11 +1207,13 @@ namespace ClickerClass
 
 					target.AddBuff(ModContent.BuffType<CrystalizedFatigue>(), 60); //Give short cooldown between application in case of proccing on the same enemy due to spread
 
+					var entitySource = projectile.GetSource_OnHit(target, context: "Crystalized");
 					int crystal = ModContent.ProjectileType<ClearKeychainPro2>();
 					bool spawnEffects = true;
 
 					float total = 10f;
 					int i = 0;
+					
 					while (i < total)
 					{
 						float hasSpawnEffects = spawnEffects ? 1f : 0f;
@@ -1217,7 +1223,7 @@ namespace ClickerClass
 						int damageAmount = (int)(damage * 0.25f);
 						damageAmount = damageAmount < 1 ? 1 : damageAmount;
 						//TODO find a better source for this
-						Projectile.NewProjectile(null, target.Center + toDir, target.velocity * 0f + toDir.SafeNormalize(Vector2.UnitY) * 10f, crystal, damageAmount, 1f, Main.myPlayer, target.whoAmI, hasSpawnEffects);
+						Projectile.NewProjectile(entitySource, target.Center + toDir, target.velocity * 0f + toDir.SafeNormalize(Vector2.UnitY) * 10f, crystal, damageAmount, 1f, Main.myPlayer, target.whoAmI, hasSpawnEffects);
 						i++;
 						spawnEffects = false;
 					}
