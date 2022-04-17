@@ -5,7 +5,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using ReLogic.Content;
-using Terraria.DataStructures;
 
 namespace ClickerClass.Projectiles
 {
