@@ -15,7 +15,7 @@ namespace ClickerClass.Items
 		// Add items to vanilla loot bags
 		public override void OpenVanillaBag(string context, Player player, int arg)
 		{
-			var source = new EntitySource_ItemOpen(player, arg);
+			var source = player.GetSource_OpenItem(arg, context: context);
 
 			switch (context)
 			{

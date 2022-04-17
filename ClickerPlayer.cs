@@ -837,7 +837,7 @@ namespace ClickerClass
 					{
 						frame= 1;
 					}
-					Projectile.NewProjectile(new EntitySource_ItemUse(Player, accCookieItem), (float)xOffset, (float)yOffset, 0f, 0f, ModContent.ProjectileType<CookiePro>(), 0, 0f, Player.whoAmI, frame);
+					Projectile.NewProjectile(Player.GetSource_ItemUse(accCookieItem), (float)xOffset, (float)yOffset, 0f, 0f, ModContent.ProjectileType<CookiePro>(), 0, 0f, Player.whoAmI, frame);
 
 					accCookieTimer = 0;
 				}
@@ -976,7 +976,7 @@ namespace ClickerClass
 				{
 					if (Player.ownedProjectileCounts[sMedalType] == 0)
 					{
-						Projectile.NewProjectile(new EntitySource_ItemUse(Player, accSMedalItem), Player.Center, Vector2.Zero, sMedalType, 0, 0f, Player.whoAmI, 0, 0.5f);
+						Projectile.NewProjectile(Player.GetSource_ItemUse(accSMedalItem), Player.Center, Vector2.Zero, sMedalType, 0, 0f, Player.whoAmI, 0, 0.5f);
 					}
 				}
 				else
@@ -989,7 +989,7 @@ namespace ClickerClass
 				{
 					if (Player.ownedProjectileCounts[fMedalType] == 0)
 					{
-						Projectile.NewProjectile(new EntitySource_ItemUse(Player, accFMedalItem), Player.Center, Vector2.Zero, fMedalType, 0, 0f, Player.whoAmI, 1, 0.5f);
+						Projectile.NewProjectile(Player.GetSource_ItemUse(accFMedalItem), Player.Center, Vector2.Zero, fMedalType, 0, 0f, Player.whoAmI, 1, 0.5f);
 					}
 				}
 				else
